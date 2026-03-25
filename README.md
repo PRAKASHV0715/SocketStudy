@@ -53,6 +53,88 @@ Socket programming finds applications in various domains, including web developm
 4.	Networked Games: Online multiplayer games rely on socket programming to facilitate communication between game clients and servers.
 5.	RPC mechanisms: which allow processes to execute code on a remote server, often use socket programming for communication.
 
+## Algorithm:
+Server Side:
+
+1.Start the program.
+
+2.Import the socket module.
+
+3.Create a socket using socket.socket().
+
+4.Define a port number for communication.
+
+5.Bind the socket to the IP address (127.0.0.1) and the specified port.
+
+6.Put the socket into listening mode using listen().
+
+7.Wait for a client connection using accept().
+
+8.When a client connects, display the client address.
+
+9.Send a connection message to the client.
+
+10.Close the client connection.
+
+11.Stop the program.
+
+Client Side:
+
+Start
+
+1.Start the program.
+
+2.Import the socket module.
+
+3.Create a socket using socket.socket().
+
+4.Specify the server IP address and port number.
+
+5.Connect to the server using connect().
+
+6.Receive the message sent by the server using recv().
+
+7.Display the received message.
+
+8.Close the socket connection.
+
+9.Stop the program.
+
+## Program:
+server side program
+~~~
+import socket
+s=socket.socket()
+print("Socket successfully created")
+port=12345
+s.bind(('127.0.0.1',port))
+print("Socket binded to %s" %(port))
+s.listen(5)
+print("Socket is listening")
+while True:
+    c,addr=s.accept()
+    print('Got connection from',addr)
+    c.send('Thank you for connecting'.encode())
+c.close()
+~~~
+client side program
+~~~
+import socket
+
+s=socket.socket()
+port=12345
+s.connect(('127.0.0.1',port))
+
+print(s.recv(1024).decode())
+s.close()
+~~~
+## Output:
+server side:
+
+<img width="985" height="457" alt="Screenshot 2026-03-25 105437" src="https://github.com/user-attachments/assets/9154e8cc-913f-4f6e-b673-e85719f8c740" />
+client side:
+
+<img width="947" height="294" alt="Screenshot 2026-03-25 105509" src="https://github.com/user-attachments/assets/76e6218e-1556-4558-90fa-060219444ea9" />
 
 ## Result:
 Thus the study of Socket Programming Completed Successfully
